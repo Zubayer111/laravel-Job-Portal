@@ -1,0 +1,9 @@
+@extends("frontend.layout.app")
+@section("content")
+    @include("frontend.components.manu_bar")
+    @include("frontend.components.hero")
+    @include("frontend.components.job_category")
+    @include("frontend.components.featured_job_start")
+    @include("frontend.components.home-blog")
+    @include("frontend.components.footer")
+@endsection
