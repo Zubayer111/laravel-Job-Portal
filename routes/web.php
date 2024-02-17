@@ -21,4 +21,9 @@ Route::get("/dashboard/plugins",[DashboardController::class,'plugins']);
 
 // frontend routes
 Route::get("/",[HomeController::class,'homePage']);
+Route::get("/Job-Page",[HomeController::class,'jobPage']);
+Route::get("/Job-detail-Page",[HomeController::class,'jobDetailsPage']);
+Route::get("/About-Page-Page",[HomeController::class,'aboutPage']);
+Route::get("/Contact-Page",[HomeController::class,'contactPage']);
+Route::get("/login-page",[HomeController::class,'loginPage']);
 // end frontend routes

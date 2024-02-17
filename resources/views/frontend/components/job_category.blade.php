@@ -104,7 +104,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="browse-btn2 text-center mt-50">
-                    <a href="job_listing.html" class="border-btn2">Browse All Sectors</a>
+                    <a href="{{url("/Job-Page")}}" class="border-btn2">Browse All Sectors</a>
                 </div>
             </div>
         </div>

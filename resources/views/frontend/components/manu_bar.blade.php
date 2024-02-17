@@ -7,7 +7,7 @@
                         <!-- Logo -->
                         <div class="logo">
                             <a href="index.html"><img src="{{asset("frontend/assets/img/logo/logo.png")}}" alt=""></a>
-                        </div>  
+                        </div>
                     </div>
                     <div class="col-lg-9 col-md-9">
                         <div class="menu-wrapper">
@@ -15,18 +15,18 @@
                             <div class="main-menu">
                                 <nav class="d-none d-lg-block">
                                     <ul id="navigation">
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="job_listing.html">Find a Jobs </a></li>
-                                        <li><a href="about.html">About</a></li>
+                                        <li><a href="{{url("/")}}">Home</a></li>
+                                        <li><a href="{{url("/Job-Page")}}">Find a Jobs </a></li>
+                                        <li><a href="{{url("/About-Page-Page")}}">About</a></li>
                                         <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="{{url("/Contact-Page")}}">Contact</a></li>
                                     </ul>
                                 </nav>
-                            </div>          
+                            </div>
                             <!-- Header-btn -->
                             <div class="header-btn d-none f-right d-lg-block">
-                                <a href="#" class="btn head-btn1">Register</a>
-                                <a href="#" class="btn head-btn2">Login</a>
+                                <a href="{{url("/login-page")}}" class="btn head-btn1">Register</a>
+                                <a href="{{url("/login-page")}}" class="btn head-btn2">Login</a>
                             </div>
                         </div>
                     </div>
