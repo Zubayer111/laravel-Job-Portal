@@ -29,6 +29,9 @@
 
       <div class="or">OR</div>
 
+      <label for="email">User Name</label>
+      <input type="text" placeholder="Enter User Name" name="name" required />
+      
       <label for="email">Email</label>
       <input type="text" placeholder="Enter Email" name="email" required />
 
@@ -39,10 +42,9 @@
         name="password"
         required />
 
-      <button type="submit" class="login-btn">Sign in</button>
+      <button type="submit" class="login-btn">Sign up</button>
       <div class="links">
-        <a href="#">Forgot password?</a>
-        <a href="{{url("/registration-page")}}">Do not have an account?</a>
+        <a href="{{url("/login-page")}}">I have an account?</a>
       </div>
     </form>
     </div>

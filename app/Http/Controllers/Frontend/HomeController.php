@@ -31,4 +31,16 @@ class HomeController extends Controller
     public function loginPage(){
         return view("frontend.pages.login_page");
     }
+
+    public function registrationPage(){
+        return view("frontend.pages.registration_page");
+    }
+
+    public function blogPage(){
+        return view("frontend.pages.blog_page");
+    }
+
+    public function blogDetailsPage(){
+        return view("frontend.pages.blog_details_page");
+    }
 }

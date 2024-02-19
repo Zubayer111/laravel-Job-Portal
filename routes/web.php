@@ -23,7 +23,10 @@ Route::get("/dashboard/plugins",[DashboardController::class,'plugins']);
 Route::get("/",[HomeController::class,'homePage']);
 Route::get("/Job-Page",[HomeController::class,'jobPage']);
 Route::get("/Job-detail-Page",[HomeController::class,'jobDetailsPage']);
-Route::get("/About-Page-Page",[HomeController::class,'aboutPage']);
+Route::get("/about-Page",[HomeController::class,'aboutPage']);
 Route::get("/Contact-Page",[HomeController::class,'contactPage']);
 Route::get("/login-page",[HomeController::class,'loginPage']);
+Route::get("/registration-page",[HomeController::class,'registrationPage']);
+Route::get("/blog-page",[HomeController::class,'blogPage']);
+Route::get("/blog-details-page",[HomeController::class,'blogDetailsPage']);
 // end frontend routes
