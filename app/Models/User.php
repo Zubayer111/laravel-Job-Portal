@@ -13,8 +13,13 @@ class User extends Model
         "email",
         "otp",
     ];
-    public function profile()
+    public function candidate()
     {
         return $this->hasOne(Candidate::class);
+    }
+
+    public function company()
+    {
+        return $this->hasOne(Company::class);
     }
 }
