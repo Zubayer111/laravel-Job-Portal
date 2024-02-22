@@ -29,4 +29,5 @@ Route::get("/login-page",[HomeController::class,'loginPage']);
 Route::get("/registration-page",[HomeController::class,'registrationPage']);
 Route::get("/blog-page",[HomeController::class,'blogPage']);
 Route::get("/blog-details-page",[HomeController::class,'blogDetailsPage']);
+Route::get("/company-apply-page",[HomeController::class,'companyPage']);
 // end frontend routes

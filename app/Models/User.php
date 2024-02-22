@@ -13,6 +13,10 @@ class User extends Model
         "email",
         "otp",
     ];
+
+    protected $attributes = [
+        'otp' => 0,
+    ];
     public function candidate()
     {
         return $this->hasOne(Candidate::class);

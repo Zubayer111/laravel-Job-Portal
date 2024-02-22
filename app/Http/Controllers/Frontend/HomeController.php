@@ -43,4 +43,8 @@ class HomeController extends Controller
     public function blogDetailsPage(){
         return view("frontend.pages.blog_details_page");
     }
+
+    public function companyPage(){
+        return view("frontend.pages.company_form_page");
+    }
 }

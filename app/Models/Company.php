@@ -13,6 +13,10 @@ class Company extends Model
         'user_id', 'name', 'description', 'address', 'logo', 'status'
     ];
 
+    protected $attributes = [
+        'status' => 0,
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

@@ -23,6 +23,9 @@
                                     </ul>
                                 </nav>
                             </div>
+                            <div class="header-btn d-none f-right d-lg-block">
+                                <a href="{{url("/company-apply-page")}}" class="btn head-btn2">Apply for Company</a>
+                            </div>
                             <!-- Header-btn -->
                             <div class="header-btn d-none f-right d-lg-block">
                                 <a href="{{url("/login-page")}}" class="btn head-btn2">Login</a>
