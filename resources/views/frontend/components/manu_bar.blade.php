@@ -28,7 +28,19 @@
                             </div>
                             <!-- Header-btn -->
                             <div class="header-btn d-none f-right d-lg-block">
-                                <a href="{{url("/login-page")}}" class="btn head-btn2">Login</a>
+                                @auth
+                                    <!-- Show user's name and logout button -->
+                                        
+                                            
+                                            <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                                                @csrf
+                                                <button type="submit" class="btn btn-link text-white">Logout</button>
+                                            </form>
+                                        
+                                    @else
+                                        <!-- Show login button if user is not logged in -->
+                                        <a href="{{ url('/login-page') }}" class="btn head-btn2">Login</a>
+                                    @endauth
                             </div>
                         </div>
                     </div>

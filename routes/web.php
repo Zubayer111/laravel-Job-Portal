@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Backend\DashboardController;
@@ -31,3 +32,9 @@ Route::get("/blog-page",[HomeController::class,'blogPage']);
 Route::get("/blog-details-page",[HomeController::class,'blogDetailsPage']);
 Route::get("/company-apply-page",[HomeController::class,'companyPage']);
 // end frontend routes
+
+// auth routes
+Route::post("/login",[AuthController::class,'login'])->name("login");
+Route::post("/register",[AuthController::class,'register'])->name("register");
+Route::post("/logout",[AuthController::class,'logout'])->name("logout");
+// end auth routes

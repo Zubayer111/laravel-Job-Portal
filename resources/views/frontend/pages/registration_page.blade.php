@@ -15,7 +15,8 @@
      <div class="left-side"></div>
     
     <div class="right-side">
-      <form>
+      <form method="POST" action="{{route("register")}}" enctype="multipart/form-data">
+        @csrf
       <div class="btn-group">
         <button class="btn">
           <img class="logo" src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/d1c98974-c62d-4071-8bd2-ab859fc5f4e9" alt="" />
@@ -29,7 +30,7 @@
 
       <div class="or">OR</div>
 
-      <label for="email">User Name</label>
+      <label for="name">User Name</label>
       <input type="text" placeholder="Enter User Name" name="name" required />
       
       <label for="email">Email</label>

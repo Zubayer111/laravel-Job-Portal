@@ -10,12 +10,20 @@
 <body>
   
   <div id="particles-js" class="snow"></div>
-
+  
   <main>
+
      <div class="left-side"></div>
     
     <div class="right-side">
-      <form>
+      @if(session('success'))
+      <div class="mb-3 text-center text-success">
+          {{ session('success') }}
+      </div>
+      @endif
+      <form action="{{route("login")}}" method="POST">
+
+        @csrf
       <div class="btn-group">
         <button class="btn">
           <img class="logo" src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/d1c98974-c62d-4071-8bd2-ab859fc5f4e9" alt="" />
