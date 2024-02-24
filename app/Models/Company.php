@@ -14,7 +14,7 @@ class Company extends Model
     ];
 
     protected $attributes = [
-        'status' => 0,
+        'status' => "inactive",
     ];
 
     public function user()

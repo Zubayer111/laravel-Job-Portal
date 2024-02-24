@@ -4,7 +4,12 @@
             <div class="card">
                 <div class="card-header">Apply Company</div>
                 <div class="card-body">
-                    <form method="POST" action="" enctype="multipart/form-data">
+                    @if(session('success'))
+                        <div class="text-success text-bold m-3 text-center">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    <form method="POST" action="{{route("addCompanie")}}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <input type="text" class="form-control" id="user_id" name="user_id" hidden>

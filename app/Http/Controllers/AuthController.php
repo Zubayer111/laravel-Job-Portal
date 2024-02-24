@@ -18,7 +18,7 @@ class AuthController extends Controller
                 'password' => 'required|string|min:8',
             ]);
 
-        $user = User::create([
+        User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
@@ -36,7 +36,7 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
     
         if (Auth::attempt($credentials)) {
-            $user = Auth::user();
+             Auth::user();
             return redirect()->intended('/'); 
         }
     
@@ -47,7 +47,7 @@ class AuthController extends Controller
     {
         $request->user()->tokens()->delete();
 
-            Auth::logout(); // Optional: If you're using session-based authentication
+            Auth::logout(); 
 
                 return redirect('/');
     }

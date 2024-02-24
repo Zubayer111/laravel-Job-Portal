@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Frontend\CompanyController;
 
 // dashboard page routes
 Route::get("/dashboard",[DashboardController::class,'index']);
@@ -38,3 +39,7 @@ Route::post("/login",[AuthController::class,'login'])->name("login");
 Route::post("/register",[AuthController::class,'register'])->name("register");
 Route::post("/logout",[AuthController::class,'logout'])->name("logout");
 // end auth routes
+
+// companie routes
+Route::post("/add-companie",[CompanyController::class,'addCompanie'])->name("addCompanie");
+// end companie routes

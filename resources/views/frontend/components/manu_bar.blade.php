@@ -23,10 +23,17 @@
                                     </ul>
                                 </nav>
                             </div>
+
+                            @if(session('success'))
+                            <div class="header-btn d-none f-right d-lg-block">
+                                <a href="{{url("/dashboard")}}" class="btn head-btn2">Dashboard</a>
+                            </div>
+                            @else 
                             <div class="header-btn d-none f-right d-lg-block">
                                 <a href="{{url("/company-apply-page")}}" class="btn head-btn2">Apply for Company</a>
                             </div>
-                            <!-- Header-btn -->
+                             @endif
+                            
                             <div class="header-btn d-none f-right d-lg-block">
                                 @auth
                                     <!-- Show user's name and logout button -->
