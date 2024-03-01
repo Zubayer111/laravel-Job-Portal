@@ -34,14 +34,21 @@ class AuthController extends Controller
         ]);
     
         $credentials = $request->only('email', 'password');
-    
+
         if (Auth::attempt($credentials)) {
-             Auth::user();
-            return redirect()->intended('/'); 
+            $user = Auth::user();
+            
+            if ($user->type === 'employer') {
+                return redirect('/dashboard/jobs');
+            } elseif ($user->type === 'employee') {
+                return "employee login";
+            } else {
+                return "admin login";
+            }
+        } else {
+            return redirect()->route('login')->with('success', 'Invalid credentials');
         }
     
-        return redirect('/login-page')->with('success', 'Invalid Credentials');
-        
     }
     public function logout(Request $request)
     {

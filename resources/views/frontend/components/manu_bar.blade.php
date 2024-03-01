@@ -26,7 +26,7 @@
 
                             @if(session('success'))
                             <div class="header-btn d-none f-right d-lg-block">
-                                <a href="{{url("/dashboard")}}" class="btn head-btn2">Dashboard</a>
+                                
                             </div>
                             @else 
                             <div class="header-btn d-none f-right d-lg-block">
@@ -37,8 +37,6 @@
                             <div class="header-btn d-none f-right d-lg-block">
                                 @auth
                                     <!-- Show user's name and logout button -->
-                                        
-                                            
                                             <form action="{{ route('logout') }}" method="POST" class="d-inline">
                                                 @csrf
                                                 <button type="submit" class="btn btn-link text-white">Logout</button>

@@ -10,11 +10,11 @@ class Company extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'name', 'description', 'address', 'logo', 'status'
+        'user_id','name', 'description', 'address', 'logo', 'status' 
     ];
 
     protected $attributes = [
-        'status' => "inactive",
+        'status' => 'inactive',
     ];
 
     public function user()

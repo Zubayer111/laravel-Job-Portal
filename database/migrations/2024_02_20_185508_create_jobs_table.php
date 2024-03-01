@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('company_id');
+            $table->unsignedBigInteger('job_category_id');
             $table->string('title');
             $table->string('description');
             $table->string('requirements');
+            $table->enum('employmentstatus',['full_time','part_time','junior','senior','internship']);
             $table->string('salary');
             $table->string('location');
             $table->date('deadline');
@@ -24,6 +26,7 @@ return new class extends Migration
 
             // Define foreign key constraint
             $table->foreign('company_id')->references('id')->on('companies')->restrictOnDelete();
+            $table->foreign('job_category_id')->references('id')->on('job_categories')->restrictOnDelete();
         });
     }
 

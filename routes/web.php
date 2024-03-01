@@ -1,15 +1,19 @@
 <?php
 
-use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Backend\JobController;
 use App\Http\Controllers\Frontend\HomeController;
-use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Frontend\CompanyController;
+use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\JobCatagoryController;
 
 // dashboard page routes
 Route::get("/dashboard",[DashboardController::class,'index']);
 Route::get("/dashboard/comapnies",[DashboardController::class,'comapnies']);
 Route::get("/dashboard/addCompanieForm",[DashboardController::class,'addCompanieForm']);
+Route::get("/dashboard/jobs-catagory",[DashboardController::class,'jobsCatagory']);
+Route::get("/dashboard/addJobCatagoryForm",[DashboardController::class,'addJobCatagoryForm']);
 Route::get("/dashboard/jobs",[DashboardController::class,'jobs']);
 Route::get("/dashboard/addJobForm",[DashboardController::class,'addJobForm']);
 Route::get("/dashboard/employees",[DashboardController::class,'employees']);
@@ -43,3 +47,17 @@ Route::post("/logout",[AuthController::class,'logout'])->name("logout");
 // companie routes
 Route::post("/add-companie",[CompanyController::class,'addCompanie'])->name("addCompanie");
 // end companie routes
+
+// job catagory routes
+Route::post("/add-job-catagory",[JobCatagoryController::class,'addJobCatagory'])->name("addJobCatagory");
+// end job catagory routes
+// job routes
+Route::get("/jobs",[JobController::class,'index']);
+Route::post("/jobs/create",[JobController::class,'create'])->name("createJob");
+// Route::post("/jobs",[JobController::class,'store']);
+// Route::get("/jobs/{job}",[JobController::class,'show']);
+// Route::get("/jobs/{job}/edit",[JobController::class,'edit']);
+// Route::put("/jobs/{job}",[JobController::class,'update']);
+// Route::delete("/jobs/{job}",[JobController::class,'destroy']);
+// end job routes
+

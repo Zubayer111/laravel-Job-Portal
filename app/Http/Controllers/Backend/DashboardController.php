@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
+use App\Models\JobCategory;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
@@ -18,6 +19,15 @@ class DashboardController extends Controller
 
     public function addCompanieForm(){
         return view('backend.pages.add_company');
+    }
+
+    public function jobsCatagory(){
+        $datas = JobCategory::all();
+        return view("backend.pages.job_catagory_table",compact('datas'));
+    }
+
+    public function addJobCatagoryForm(){
+        return view("backend.pages.add_job_catagory");
     }
 
     public function jobs(){

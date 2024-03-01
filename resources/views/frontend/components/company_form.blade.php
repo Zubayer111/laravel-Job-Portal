@@ -12,11 +12,16 @@
                     <form method="POST" action="{{route("addCompanie")}}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <input type="text" class="form-control" id="user_id" name="user_id" hidden>
-                        </div>
-                        <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" class="form-control" id="name" name="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Email</label>
+                            <input type="email" class="form-control" id="name" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Password</label>
+                            <input type="password" class="form-control" id="name" name="password">
                         </div>
                         <div class="form-group">
                             <label for="address">Address</label>

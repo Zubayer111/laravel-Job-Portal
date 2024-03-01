@@ -2,39 +2,65 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Models\Company;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 
 class CompanyController extends Controller
 {
     public function addCompanie(Request $request)
     {
-        // $request->validate([
-        //     'user_id' => 'required|exists:users,id',
-        //     'name' => 'required|string|max:255',
-        //     'description' => 'nullable|string',
-        //     'address' => 'nullable|string|max:255',
-        //     'logo' => 'nullable|image|max:2048',
-        // ]);
-        $user = Auth::user();
-        $userId = $user->id;
-
-        $img = $request->file("logo");
+        try {
+            DB::beginTransaction();
+            $users = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'type' => 'employer',
+            ]);
+            $userId = $users->id;
+            $img = $request->file("logo");
             $time = time();
             $file_name = $img->getClientOriginalName();
             $img_name = "{$userId}-{$time}-{$file_name}";
             $img_url = "uploads/{$img_name}";
-            $img->move(public_path('uploads'),$img_name);
-         Company::create([
-            'user_id' => $userId,
-            'name' => $request->name,
-            'description' => $request->description,
-            'address' => $request->address,
-            'logo' => $img_url,
-        ]);
-        
-        return redirect('/company-apply-page')->with('success', 'Company applied successfully!');
+            $img->move(public_path('uploads'), $img_name);
+            Company::create([
+                'user_id' => $userId,
+                'name' => $request->name,
+                'description' => $request->description,
+                'address' => $request->address,
+                'logo' => $img_url,
+            ]);
+            DB::commit();
+            //dd($company);
+            return redirect('/company-apply-page')->with('success', 'Company applied successfully!');
+        } catch (Exception $e) {
+            DB::rollBack();
+            return redirect('/company-apply-page')->with('success', 'Company applied failed!');
+        }
+    }
+
+    public function login(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            if ($user->role->name === 'employer') {
+                return redirect()->route('admin.dashboard');
+            } elseif ($user->role->name === 'company') {
+                return redirect()->route('user.dashboard');
+            } else {
+                return redirect()->route('home');
+            }
+        } else {
+            return redirect()->route('login')->with('error', 'Invalid credentials');
+        }
     }
 }

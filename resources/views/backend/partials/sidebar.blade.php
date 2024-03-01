@@ -13,6 +13,12 @@
 			</a>
 		</li>
 		<li class="nav-item">
+			<a class="nav-link" href="{{url("/dashboard/jobs-catagory")}}">
+				<i class="mdi mdi-file-document-box-outline menu-icon"></i>
+				<span class="menu-title">Job Catagory</span>
+			</a>
+		</li>
+		<li class="nav-item">
 			<a class="nav-link" href="{{url("/dashboard/jobs")}}">
 				<i class="mdi mdi-file-document-box-outline menu-icon"></i>
 				<span class="menu-title">Jobs</span>
