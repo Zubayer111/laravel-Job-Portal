@@ -66,11 +66,13 @@
 								<span class="nav-profile-name">Louis Barnett</span>
 							</a>
 							<div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-								
-								<a class="dropdown-item">
-									<i class="mdi mdi-logout text-primary"></i>
-									Logout
-								</a>
+								<form action="{{route("logout")}}" method="post">
+									@csrf
+									<button type="submit" class="btn dropdown-item">
+										<i class="mdi mdi-logout text-primary"></i>
+										Logout
+									</button>
+							</form>
 							</div>
 						</li>
 					</ul>

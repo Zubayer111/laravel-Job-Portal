@@ -10,12 +10,14 @@ class JobCategory extends Model
     use HasFactory;
 
     protected $fillable = [
+        "company_id",
         'name',
         'description',
     ];
 
-    public function jobs()
+    
+    public function user()
     {
-        return $this->hasMany(Job::class);
+        return $this->belongsTo(Company::class);
     }
 }

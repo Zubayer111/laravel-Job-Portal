@@ -9,6 +9,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Exception;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 
 class CompanyController extends Controller
@@ -46,21 +47,5 @@ class CompanyController extends Controller
         }
     }
 
-    public function login(Request $request)
-    {
-        $credentials = $request->only('email', 'password');
-
-        if (Auth::attempt($credentials)) {
-            $user = Auth::user();
-            if ($user->role->name === 'employer') {
-                return redirect()->route('admin.dashboard');
-            } elseif ($user->role->name === 'company') {
-                return redirect()->route('user.dashboard');
-            } else {
-                return redirect()->route('home');
-            }
-        } else {
-            return redirect()->route('login')->with('error', 'Invalid credentials');
-        }
-    }
+    
 }

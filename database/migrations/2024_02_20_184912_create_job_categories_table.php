@@ -13,9 +13,13 @@ return new class extends Migration
     {
         Schema::create('job_categories', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('company_id');
             $table->string('name')->unique();
             $table->string('description');
             $table->timestamps();
+
+            // Define foreign key constraint
+            $table->foreign('company_id')->references('id')->on('companies')->restrictOnDelete();
         });
     }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Company;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -37,8 +38,9 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            
+            $company = Company::where('user_id', $user->id)->first();
             if ($user->type === 'employer') {
+                $request->session()->put("company_id", $company->id);
                 return redirect('/dashboard/jobs');
             } elseif ($user->type === 'employee') {
                 return "employee login";
@@ -46,7 +48,7 @@ class AuthController extends Controller
                 return "admin login";
             }
         } else {
-            return redirect()->route('login')->with('success', 'Invalid credentials');
+            return redirect()->back()->with('success', 'Invalid credentials');
         }
     
     }

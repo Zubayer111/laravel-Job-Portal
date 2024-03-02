@@ -49,9 +49,8 @@
                         {{$data->description}}
                     </td>
                     <td>
-                            <a href="{{url("/dashboard/addCompanieForm")}}" class="btn btn-sm btn-primary" ><i class="mdi mdi-table-edit"></i> </a>
-                            <a href="#" class="btn btn-sm btn-primary py-2" ><i class="mdi mdi-delete-forever"></i> </a>
-                            <a href="#" class="btn btn-sm btn-primary py-2" ><i class="mdi mdi-eye"></i> </a>
+                            <a href="{{url("/edit-job-catagory",["jobCatagory"=>$data->id])}}" class="btn btn-sm btn-primary" ><i class="mdi mdi-table-edit"></i> </a>
+                            <a href="{{url("/delete-job-catagory",["jobCatagory"=>$data->id])}}" class="btn btn-sm btn-primary py-2" ><i class="mdi mdi-delete-forever"></i> </a>
                     </td>
                   @endforeach
                   

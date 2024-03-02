@@ -50,6 +50,9 @@ Route::post("/add-companie",[CompanyController::class,'addCompanie'])->name("add
 
 // job catagory routes
 Route::post("/add-job-catagory",[JobCatagoryController::class,'addJobCatagory'])->name("addJobCatagory");
+Route::get("/edit-job-catagory/{jobCatagory}",[JobCatagoryController::class,'editJobCatagory'])->name("editJobCatagory");
+Route::post("/update-job-catagory/{jobCatagory}",[JobCatagoryController::class,'updateJobCatagory'])->name("updateJobCatagory");
+Route::get("/delete-job-catagory/{jobCatagory}",[JobCatagoryController::class,'deleteJobCatagory'])->name("deleteJobCatagory");
 // end job catagory routes
 // job routes
 Route::get("/jobs",[JobController::class,'index']);

@@ -14,8 +14,10 @@
                     <h2>Job Posting Form</h2>
                     <form action="{{route("createJob")}}" method="POST" enctype="multipart/form-data">
                         @csrf
+                      
                       <div class="form-group">
-                        <input type="text" class="form-control"  id="company_id" name="company_id" required>
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title" name="title" required>
                       </div>
                       <div class="form-group">
                         <label for="title">Title</label>
