@@ -55,12 +55,10 @@ Route::post("/update-job-catagory/{jobCatagory}",[JobCatagoryController::class,'
 Route::get("/delete-job-catagory/{jobCatagory}",[JobCatagoryController::class,'deleteJobCatagory'])->name("deleteJobCatagory");
 // end job catagory routes
 // job routes
-Route::get("/jobs",[JobController::class,'index']);
-Route::post("/jobs/create",[JobController::class,'create'])->name("createJob");
-// Route::post("/jobs",[JobController::class,'store']);
-// Route::get("/jobs/{job}",[JobController::class,'show']);
-// Route::get("/jobs/{job}/edit",[JobController::class,'edit']);
-// Route::put("/jobs/{job}",[JobController::class,'update']);
-// Route::delete("/jobs/{job}",[JobController::class,'destroy']);
+Route::post("/jobs/create",[JobController::class,'createJob'])->name("createJob");
+Route::get("/jobs/{job}",[JobController::class,'showJob'])->name("showJob");
+Route::get("/delete-jobs/{job}",[JobController::class,'deleteJob'])->name("deleteJob");
+Route::get("/edit-jobs/{job}",[JobController::class,'editJob'])->name("editJob");
+Route::post("/update-jobs/{job}",[JobController::class,'updateJob'])->name("updateJob");
 // end job routes
 

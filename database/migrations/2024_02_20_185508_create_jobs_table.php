@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('title');
             $table->string('description');
             $table->string('requirements');
+            $table->string('experience')->default("Intern");
+            $table->string('vacancy')->default(0);
+            $table->string('skills');
             $table->enum('employmentstatus',['full_time','part_time','junior','senior','internship']);
             $table->string('salary');
             $table->string('location');
