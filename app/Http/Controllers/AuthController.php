@@ -13,11 +13,11 @@ class AuthController extends Controller
 {
     public function register(Request $request)
     {
-            $request->validate([
-                'name' => 'required|string|max:255',
-                'email' => 'required|string|email|max:255|unique:users',
-                'password' => 'required|string|min:8',
-            ]);
+            // $request->validate([
+            //     'name' => 'required|string|max:255',
+            //     'email' => 'required|string|email|max:255|unique:users',
+            //     'password' => 'required|string|min:8',
+            // ]);
 
         User::create([
             'name' => $request->name,
@@ -43,7 +43,7 @@ class AuthController extends Controller
                 $request->session()->put("company_id", $company->id);
                 return redirect('/dashboard/jobs');
             } elseif ($user->type === 'employee') {
-                return "employee login";
+               return redirect('/');
             } else {
                 return "admin login";
             }
@@ -52,9 +52,9 @@ class AuthController extends Controller
         }
     
     }
-    public function logout(Request $request)
+    public function logout()
     {
-        $request->user()->tokens()->delete();
+        
 
             Auth::logout(); 
 

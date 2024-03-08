@@ -66,13 +66,14 @@
 								<span class="nav-profile-name">Louis Barnett</span>
 							</a>
 							<div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-								<form action="{{route("logout")}}" method="post">
+								{{-- <form action="{{route("logout")}}" method="post">
 									@csrf
 									<button type="submit" class="btn dropdown-item">
 										<i class="mdi mdi-logout text-primary"></i>
 										Logout
 									</button>
-							</form>
+							</form> --}}
+							<a  href="{{url("logout")}}" class="btn dropdown-item"><i class="mdi mdi-logout text-primary"></i>Logout</a>
 							</div>
 						</li>
 					</ul>

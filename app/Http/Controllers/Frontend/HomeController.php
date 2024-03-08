@@ -3,21 +3,28 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Company;
+use App\Models\Job;
+use App\Models\JobCategory;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function homePage()
     {
-        return view("frontend.pages.home_page");
+        $companys = Company::all();
+        $jobs = Job::all();
+        return view("frontend.pages.home_page",compact("companys","jobs"));
     }
 
     public function jobPage(){
-        return view("frontend.pages.job_page");
+        $jobs = Job::all();
+        return view("frontend.pages.job_page", compact("jobs"));
     }
 
-    public function jobDetailsPage(){
-        return view("frontend.pages.job_details_page");
+    public function jobDetailsPage($job){
+        $job = Job::find($job);
+        return view("frontend.pages.job_details_page", compact("job"));
     }
 
     public function aboutPage(){
@@ -46,5 +53,9 @@ class HomeController extends Controller
 
     public function companyPage(){
         return view("frontend.pages.company_form_page");
+    }
+
+    public function profilePage(){
+        return view("frontend.pages.profile_page");
     }
 }

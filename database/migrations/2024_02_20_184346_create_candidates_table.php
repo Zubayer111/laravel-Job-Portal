@@ -30,10 +30,8 @@ return new class extends Migration
             $table->string('github_link');
             $table->string('behance_dribble_link')->nullable();
             $table->string('portfolio_website')->nullable();
-            $table->string('resume');
             $table->string('image_url');
             $table->string('skills');
-            $table->string('expected_salary')->nullable();
             $table->timestamps();
 
             // Define foreign key constraint
