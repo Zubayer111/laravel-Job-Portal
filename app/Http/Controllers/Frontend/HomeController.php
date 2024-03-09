@@ -58,4 +58,9 @@ class HomeController extends Controller
     public function profilePage(){
         return view("frontend.pages.profile_page");
     }
+
+    public function jobApplicationPage($job){
+        $job = Job::find($job);
+        return view("frontend.pages.apply_page", compact("job"));
+    }
 }

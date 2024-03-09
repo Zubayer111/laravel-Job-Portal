@@ -91,7 +91,7 @@
     </div>
     <div class="form-group">
       <label for="expected_salary">Expected Salary:</label>
-      <input type="number" class="form-control" id="expected_salary" name="expected_salary" placeholder="Enter Expected Salary">
+      <input type="text" class="form-control" id="expected_salary" name="expected_salary" placeholder="Enter Expected Salary">
     </div>
     <div class="form-group">
         <label for="image_url">Image</label>

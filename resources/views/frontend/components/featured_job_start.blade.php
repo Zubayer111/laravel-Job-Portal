@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="items-link f-right">
-                <a href="{{url("/Job-detail-Page",["job"=>$job->id])}}">{{$job->employmentstatus}}</a>
+                <a href="{{url("/Job-detail-Page",["job"=>$job->id])}}">View Detail</a>
                 <span>7 hours ago</span>
             </div>
         </div>

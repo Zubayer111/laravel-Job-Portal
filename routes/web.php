@@ -70,3 +70,8 @@ Route::post("/update-jobs/{job}",[JobController::class,'updateJob'])->name("upda
 // candidate routes
 Route::post("/createCandidate",[CandidateController::class,'createCandidate'])->name("createCandidate");
 // end candidate routes
+
+// job application routes
+Route::get("/job-application/{job}",[HomeController::class,'jobApplicationPage'])->name("jobApplication");
+Route::post("/job-application/{job}",[JobController::class,'storeJobApplication'])->name("storeJobApplication");
+// end job application routes

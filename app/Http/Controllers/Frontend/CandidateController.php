@@ -64,7 +64,9 @@ class CandidateController extends Controller
            
         }
         }
+        $request->session()->put("candidate_id", $candidate->id);
         DB::commit();
+
         return redirect()->back()->with('success', 'Profile created successfully');
     }
 }

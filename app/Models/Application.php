@@ -12,6 +12,10 @@ class Application extends Model
         'job_id', 'candidate_id', 'status', 'cover_letter', 'resume',
     ];
 
+    protected $attributes =[
+            "status" => "applied"
+    ];
+
     public function job()
     {
         return $this->belongsTo(Job::class);

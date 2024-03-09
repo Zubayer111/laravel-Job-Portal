@@ -6,6 +6,7 @@ use App\Models\Job;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Application;
 use App\Models\JobCategory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -68,5 +69,28 @@ class JobController extends Controller
             'skills' => $request->skills
         ]);
         return redirect('/dashboard/jobs')->with('success', 'Job updated successfully!');
+    }
+
+    public function storeJobApplication(Request $request, $job){
+        $job_id = Job::findOrFail($job)->id;;
+        $candidate_id = Session::get('candidate_id');
+
+        $img = $request->file("resume");
+            $time = time();
+            $file_name = $img->getClientOriginalName();
+            $img_name = "{$candidate_id}-{$time}-{$file_name}";
+            $img_url = "uploads/resume/{$img_name}";
+            $img->move(public_path('uploads/resume'), $img_name);
+
+        $appl = Application::create([
+            'job_id' => $job_id,
+            'candidate_id' => $candidate_id,
+            'status' => "applied",
+            'cover_letter' => $request->cover_letter,
+            'resume' => $img_url
+        ]);
+
+        return redirect('/dashboard/jobs')->with('success', 'Application created successfully!');
+       
     }
 }
