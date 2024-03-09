@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Backend;
 
+use Exception;
 use App\Models\Job;
 use App\Models\Company;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\Application;
 use App\Models\JobCategory;
+use Illuminate\Http\Request;
+use App\Models\JobExperiences;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -72,6 +75,8 @@ class JobController extends Controller
     }
 
     public function storeJobApplication(Request $request, $job){
+        try{
+            DB::beginTransaction();
         $job_id = Job::findOrFail($job)->id;;
         $candidate_id = Session::get('candidate_id');
 
@@ -82,7 +87,7 @@ class JobController extends Controller
             $img_url = "uploads/resume/{$img_name}";
             $img->move(public_path('uploads/resume'), $img_name);
 
-        $appl = Application::create([
+        $apply = Application::create([
             'job_id' => $job_id,
             'candidate_id' => $candidate_id,
             'status' => "applied",
@@ -90,7 +95,20 @@ class JobController extends Controller
             'resume' => $img_url
         ]);
 
+        JobExperiences::create([
+            'candidate_id' => $candidate_id,
+            'company_name' => $request->company_name,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'description' => $request->description
+        ]);
+
+        DB::commit();
         return redirect('/dashboard/jobs')->with('success', 'Application created successfully!');
        
+        } catch (Exception $e) {
+            DB::rollBack();
+            return redirect('/dashboard/jobs')->with('success', 'Application created failed!');
+        }
     }
 }

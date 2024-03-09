@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class CandidateController extends Controller
 {
     public function createCandidate(Request $request){
+       try{
         DB::beginTransaction();
 
         $user_id = Auth::user()->id;
@@ -68,5 +69,10 @@ class CandidateController extends Controller
         DB::commit();
 
         return redirect()->back()->with('success', 'Profile created successfully');
-    }
+       }
+       catch(\Exception $e){
+        DB::rollBack();
+        return redirect()->back()->with('success', $e->getMessage());
+       }
+    } 
 }
