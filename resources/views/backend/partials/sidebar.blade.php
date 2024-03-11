@@ -7,9 +7,9 @@
 			</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="{{url("/dashboard/comapnies")}}">
+			<a class="nav-link" href="{{url("/dashboard/jobs-catagory")}}">
 				<i class="mdi mdi-file-document-box-outline menu-icon"></i>
-				<span class="menu-title">Comapnies</span>
+				<span class="menu-title">Profile</span>
 			</a>
 		</li>
 		<li class="nav-item">

@@ -87,7 +87,7 @@ class JobController extends Controller
             $img_url = "uploads/resume/{$img_name}";
             $img->move(public_path('uploads/resume'), $img_name);
 
-        $apply = Application::create([
+        Application::create([
             'job_id' => $job_id,
             'candidate_id' => $candidate_id,
             'status' => "applied",

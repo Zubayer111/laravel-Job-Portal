@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Job;
+use App\Models\Blog;
 use App\Models\Company;
 use App\Models\JobCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class DashboardController extends Controller
 {
@@ -16,7 +18,8 @@ class DashboardController extends Controller
     }
 
     public function comapnies(){
-        return view('backend.pages.company_table');
+        $datas = Company::all();
+        return view('backend.pages.company_table',compact('datas'));
     }
 
     public function addCompanieForm(){
@@ -33,7 +36,8 @@ class DashboardController extends Controller
     }
 
     public function jobs(){
-        $datas = Job::all();
+        $datas = Job::where('company_id', Session::get('company_id'))->get();
+        //$datas = Job::all();
         return view('backend.pages.job_table',compact('datas'));
     }
     public function addJobForm(){
@@ -49,7 +53,8 @@ class DashboardController extends Controller
     }
 
     public function blogs(){
-        return view('backend.pages.blog_table');
+        $blogs = Blog::where('company_id', Session::get('company_id'))->get();;
+        return view('backend.pages.blog_table',compact('blogs'));
     }
 
     public function addBlog(){
@@ -62,5 +67,10 @@ class DashboardController extends Controller
 
     public function plugins(){
         return view('backend.pages.plugin_table');
+    }
+
+    public function companiesDetails($company){
+        $data = Company::find($company);
+        return view('backend.pages.company_details',compact('data'));
     }
 }

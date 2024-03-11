@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Models\Company;
 use App\Models\Job;
+use App\Models\Blog;
+use App\Models\Company;
 use App\Models\JobCategory;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
     public function homePage()
     {
-        $companys = Company::all();
-        $jobs = Job::all();
-        return view("frontend.pages.home_page",compact("companys","jobs"));
+        $companys = Company::take("6")->get();
+        $jobs = Job::take("6")->get();
+        $blogs = Blog::take("4")->get();
+        return view("frontend.pages.home_page",compact("companys","jobs","blogs"));
     }
 
     public function jobPage(){
@@ -44,11 +46,13 @@ class HomeController extends Controller
     }
 
     public function blogPage(){
-        return view("frontend.pages.blog_page");
+        $blogs = Blog::paginate(4);
+        return view("frontend.pages.blog_page", compact("blogs"));
     }
 
-    public function blogDetailsPage(){
-        return view("frontend.pages.blog_details_page");
+    public function blogDetailsPage($blog){
+        $blog = Blog::find($blog);
+        return view("frontend.pages.blog_details_page", compact("blog"));
     }
 
     public function companyPage(){

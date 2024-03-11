@@ -1,14 +1,15 @@
 <?php
 
+use App\Models\Candidate;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Backend\JobController;
+use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\CompanyController;
 use App\Http\Controllers\Backend\DashboardController;
-use App\Http\Controllers\Backend\JobCatagoryController;
 use App\Http\Controllers\Frontend\CandidateController;
-use App\Models\Candidate;
+use App\Http\Controllers\Backend\JobCatagoryController;
 
 // dashboard page routes
 Route::get("/dashboard",[DashboardController::class,'index']);
@@ -17,7 +18,6 @@ Route::get("/dashboard/addCompanieForm",[DashboardController::class,'addCompanie
 Route::get("/dashboard/jobs-catagory",[DashboardController::class,'jobsCatagory']);
 Route::get("/dashboard/addJobCatagoryForm",[DashboardController::class,'addJobCatagoryForm']);
 Route::get("/dashboard/jobs",[DashboardController::class,'jobs']);
-Route::get("/dashboard/addJobForm",[DashboardController::class,'addJobForm']);
 Route::get("/dashboard/employees",[DashboardController::class,'employees']);
 Route::get("/dashboard/addEmploye",[DashboardController::class,'addEmploye']);
 Route::get("/dashboard/blogs",[DashboardController::class,'blogs']);
@@ -36,7 +36,7 @@ Route::get("/Contact-Page",[HomeController::class,'contactPage']);
 Route::get("/login-page",[HomeController::class,'loginPage']);
 Route::get("/registration-page",[HomeController::class,'registrationPage']);
 Route::get("/blog-page",[HomeController::class,'blogPage']);
-Route::get("/blog-details-page",[HomeController::class,'blogDetailsPage']);
+Route::get("/blog-details-page/{blog}",[HomeController::class,'blogDetailsPage']);
 Route::get("/company-apply-page",[HomeController::class,'companyPage']);
 Route::get("/profile-page",[HomeController::class,'profilePage']);
 // end frontend routes
@@ -52,6 +52,7 @@ Route::post("/add-employee",[DashboardController::class,'addEmploye'])->name("ad
 // end employee routes
 // companie routes
 Route::post("/add-companie",[CompanyController::class,'addCompanie'])->name("addCompanie");
+Route::get("/dashboard/companies-details/{company}",[DashboardController::class,'companiesDetails'])->name("companiesDetails");
 // end companie routes
 
 // job catagory routes
@@ -75,3 +76,11 @@ Route::post("/createCandidate",[CandidateController::class,'createCandidate'])->
 Route::get("/job-application/{job}",[HomeController::class,'jobApplicationPage'])->name("jobApplication");
 Route::post("/job-application/{job}",[JobController::class,'storeJobApplication'])->name("storeJobApplication");
 // end job application routes
+
+// blog routes
+Route::post("/create-blog",[BlogController::class,'createBlog'])->name("createBlog");
+Route::get("/edit-blog/{blog}",[BlogController::class,'editBlog'])->name("editBlog");
+Route::post("/update-blog/{blog}",[BlogController::class,'updateBlog'])->name("updateBlog");
+Route::get("/delete-blog/{blog}",[BlogController::class,'deleteBlog'])->name("deleteBlog");
+Route::get("/show-blog/{blog}",[BlogController::class,'showBlog'])->name("showBlog");
+// end blog routes
