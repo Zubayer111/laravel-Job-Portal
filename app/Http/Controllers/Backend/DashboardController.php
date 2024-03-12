@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Models\Job;
 use App\Models\Blog;
 use App\Models\Company;
+use App\Models\Candidate;
 use App\Models\JobCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -14,7 +15,11 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('backend.pages.home');
+        $company = Company::count();
+        $job = Job::count();
+        $candidate = Candidate::count();
+        $catagory = JobCategory::count();
+        return view('backend.pages.home',compact('company','job','candidate','catagory'));
     }
 
     public function comapnies(){
@@ -72,5 +77,10 @@ class DashboardController extends Controller
     public function companiesDetails($company){
         $data = Company::find($company);
         return view('backend.pages.company_details',compact('data'));
+    }
+
+    public function profile(){
+        $user = auth()->user();
+        return view('backend.pages.user_profile',compact('user'));
     }
 }

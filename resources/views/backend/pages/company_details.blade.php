@@ -38,14 +38,15 @@
                     <tr>
                         <th>Company Status</th>
                         <td>
-                            <form action="" method="post">
+                            {{$data->status}}
+                            {{-- <form action="" method="post">
                                 @csrf
                                 <select name="company_status" id="company_status" class="form-select">
                                         <option value="active" {{ $data->status == 'active' ? 'selected' : '' }}>Active</option>
                                         <option value="inactive" {{ $data->status == 'inactive' ? 'selected' : '' }}>Inactive</option>
                                         <option value="suspended" {{ $data->status == 'suspended' ? 'selected' : '' }}>Suspended</option>
                                 </select>
-                            </form>
+                            </form> --}}
                         </td>
                     </tr>
                 </table>

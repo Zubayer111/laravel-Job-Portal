@@ -24,6 +24,7 @@ Route::get("/dashboard/blogs",[DashboardController::class,'blogs']);
 Route::get("/dashboard/addBlog",[DashboardController::class,'addBlog']);
 Route::get("/dashboard/pages",[DashboardController::class,'pages']);
 Route::get("/dashboard/plugins",[DashboardController::class,'plugins']);
+Route::get("//dashboard/profile",[DashboardController::class,'profile']);
 
 // end dashboard page routes
 
