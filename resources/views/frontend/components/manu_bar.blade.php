@@ -46,7 +46,7 @@
                                                 {{-- @if(session('success'))
                                                 <li><a  href="{{url("/view-profile-page")}}">View Profile</a></li>
                                                 @else --}}
-                                                <li><a  href="{{url("/dashboard/profile")}}">Dashboard</a></li>
+                                                <li><a  href="{{url("/profile-page")}}">Dashboard</a></li>
                                                 
                                                 <li>
                                                     <a  href="{{url("logout")}}">Logout</a></li>

@@ -104,7 +104,7 @@ class JobController extends Controller
         ]);
 
         DB::commit();
-        return redirect('/dashboard/jobs')->with('success', 'Application created successfully!');
+        return redirect('/dashboard/profile')->with('success', 'Application created successfully!');
        
         } catch (Exception $e) {
             DB::rollBack();

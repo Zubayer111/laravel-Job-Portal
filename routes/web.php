@@ -18,13 +18,14 @@ Route::get("/dashboard/addCompanieForm",[DashboardController::class,'addCompanie
 Route::get("/dashboard/jobs-catagory",[DashboardController::class,'jobsCatagory']);
 Route::get("/dashboard/addJobCatagoryForm",[DashboardController::class,'addJobCatagoryForm']);
 Route::get("/dashboard/jobs",[DashboardController::class,'jobs']);
+Route::get("/dashboard/addJobForm",[DashboardController::class,'addJobForm']);
 Route::get("/dashboard/employees",[DashboardController::class,'employees']);
 Route::get("/dashboard/addEmploye",[DashboardController::class,'addEmploye']);
 Route::get("/dashboard/blogs",[DashboardController::class,'blogs']);
 Route::get("/dashboard/addBlog",[DashboardController::class,'addBlog']);
 Route::get("/dashboard/pages",[DashboardController::class,'pages']);
 Route::get("/dashboard/plugins",[DashboardController::class,'plugins']);
-Route::get("//dashboard/profile",[DashboardController::class,'profile']);
+Route::get("/dashboard/profile",[DashboardController::class,'profile']);
 
 // end dashboard page routes
 
